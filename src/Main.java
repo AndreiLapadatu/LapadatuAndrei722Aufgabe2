@@ -13,9 +13,10 @@ public class Main {
         MedikamentenService medikamentenService = new MedikamentenService(medikamentRepository);
         PatientenService patientenService = new PatientenService(patientenRepository);
 
-        MedikamenteController productController = new MedikamenteController(medikamentenService);
-        PatientenController customerController = new Patienten(patientenService);
-        ConsoleView consoleView = new ConsoleView(productController, customerController);
+        MedikamenteController medikamenteController = new MedikamenteController(medikamentenService);
+        PatientenController patientenController = new PatientenController(patientenService);
+
+        ConsoleView consoleView = new ConsoleView(patientenController,medikamenteController);
 
         consoleView.start();
     }
