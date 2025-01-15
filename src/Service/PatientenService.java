@@ -4,6 +4,7 @@ import Model.Patienten;
 import Repository.PatientenRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PatientenService {
     private PatientenRepository patientenRepository;
@@ -31,5 +32,9 @@ public class PatientenService {
 
     public List<Patienten> getAllPatienten() {
         return patientenRepository.getAllPatienten();
+    }
+
+    public List<Patienten>filterClientsByKrank(String krank) {
+        return getAllPatienten().stream().filter(client -> client.getDiagnose().equalsIgnoreCase(krank)).collect(Collectors.toList());
     }
 }

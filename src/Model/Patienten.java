@@ -6,12 +6,14 @@ public class Patienten {
     private int id;
     private String name;
     private int age;
+    private String diagnose;
     private List<Medikamente> medikamenteList;
 
-    public Patienten(int id, String name, int age, List<Medikamente> medikamenteList) {
+    public Patienten(int id, String name, int age,String diagnose) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.diagnose = diagnose;
         this.medikamenteList = new ArrayList<>();
     }
 
@@ -39,6 +41,14 @@ public class Patienten {
         this.age = age;
     }
 
+    public String getDiagnose() {
+        return diagnose;
+    }
+
+    public void setDiagnose(String diagnose) {
+        this.diagnose = diagnose;
+    }
+
     public List<Medikamente> getMedikamenteList() {
         return medikamenteList;
     }
@@ -52,12 +62,14 @@ public class Patienten {
         this.medikamenteList.add(medikament);
     }
 
+
     @Override
     public String toString() {
         return "Patienten{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", diagnose='" + diagnose + '\'' +
                 ", medikamenteList=" + medikamenteList +
                 '}';
     }
