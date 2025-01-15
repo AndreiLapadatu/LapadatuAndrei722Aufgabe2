@@ -46,4 +46,14 @@ public class PatientenController {
             patientenService.updatePatient(patient);
         }
     }
+
+    public List<Patienten>filterClientsByKrank(String krank) {
+        return patientenService.filterClientsByKrank(krank);
+    }
+
+
+
+    public List<Medikamente>sortPatientenMedikamente(Integer clientId, boolean ascending){
+        return patientenService.sortPatientenMedikamente(clientId, ascending);
+    }
 }

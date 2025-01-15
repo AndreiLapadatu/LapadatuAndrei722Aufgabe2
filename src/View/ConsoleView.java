@@ -45,10 +45,7 @@ public class ConsoleView {
                     filterCustomersByLocation();
                     break;
                 case 4:
-                    findCustomersByProductSeason();
-                    break;
-                case 5:
-                    sortCustomerProducts();
+                    sortClientMedicament();
                     break;
                 case 0:
                     running = false;
@@ -283,46 +280,34 @@ public class ConsoleView {
     }
 
     private void filterCustomersByLocation() {
-        System.out.print("Enter location to filter customers: ");
-        String location = scanner.nextLine();
+        System.out.print("Enter illness to filter customers: ");
+        String krank = scanner.nextLine();
 
-        List<Client> filteredCustomers = clientController.filterClientsByLocation(location);
+        List<Patienten> filteredCustomers = patientenController.filterClientsByKrank(krank);
         if (filteredCustomers.isEmpty()) {
             System.out.println("No customers found in the specified location.");
         } else {
-            for (Client customer : filteredCustomers) {
+            for (Patienten customer : filteredCustomers) {
                 System.out.println(customer);
             }
         }
     }
 
-    private void findCustomersByProductSeason() {
-        System.out.print("Enter product season to find customers: ");
-        String season = scanner.nextLine();
 
-        List<Client> customers = clientController.getCLientsByProductSeason(season);
-        if (customers.isEmpty()) {
-            System.out.println("No customers found with products from the specified season.");
-        } else {
-            for (Client customer : customers) {
-                System.out.println(customer);
-            }
-        }
-    }
 
-    private void sortCustomerProducts() {
-        System.out.print("Enter customer ID: ");
+    private void sortClientMedicament() {
+        System.out.print("Enter patient ID: ");
         int customerId = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         System.out.print("Sort ascending? (true/false): ");
         boolean ascending = scanner.nextBoolean();
         scanner.nextLine(); // Consume newline
 
-        List<Product> sortedProducts = clientController.sortClientsProducts(customerId, ascending);
+        List<Medikamente> sortedProducts = patientenController.sortPatientenMedikamente(customerId, ascending);
         if (sortedProducts.isEmpty()) {
             System.out.println("No products found for the specified customer.");
         } else {
-            for (Product product : sortedProducts) {
+            for (Medikamente product : sortedProducts) {
                 System.out.println(product);
             }
         }

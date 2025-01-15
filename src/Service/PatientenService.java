@@ -1,5 +1,6 @@
 package Service;
 
+import Model.Medikamente;
 import Model.Patienten;
 import Repository.PatientenRepository;
 
@@ -36,5 +37,17 @@ public class PatientenService {
 
     public List<Patienten>filterClientsByKrank(String krank) {
         return getAllPatienten().stream().filter(client -> client.getDiagnose().equalsIgnoreCase(krank)).collect(Collectors.toList());
+
+    }
+
+
+    public List<Medikamente>sortPatientenMedikamente(Integer clientId, boolean ascending){
+        Patienten client = patientenRepository.get(clientId);
+        if(client == null)
+            return List.of();
+
+        return client.getMedikamenteList().stream().sorted((p1,p2)->ascending ?
+                p1.getName().compareTo(p2.getName()) :
+                p2.getName().compareTo(p1.getName())).collect(Collectors.toList());
     }
 }
